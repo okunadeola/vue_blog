@@ -6,14 +6,6 @@ import { toast } from '@steveyuowo/vue-hot-toast'
 import { useAuthStore } from '@/stores/auth'
 import { createPost, updatePost, getFeaturedPost, fetchPostByID } from '@/API/rests'
 
-const EditorJS = (await import('@editorjs/editorjs')).default
-const Header = (await import('@editorjs/header')).default
-const List = (await import('@editorjs/list')).default
-const Image = (await import('@editorjs/image')).default
-const Quote = (await import('@editorjs/quote')).default
-const CodeTool = (await import('@editorjs/code')).default
-const Table = (await import('@editorjs/table')).default
-
 import { RelatedPostTool } from '@/tools/related-post-tool.ts'
 
 interface EditorTools {
@@ -125,6 +117,14 @@ async function loadFeatured(id: string) {
 
 // Initialize EditorJS
 async function initEditor(data: any) {
+  const EditorJS = (await import('@editorjs/editorjs')).default
+  const Header = (await import('@editorjs/header')).default
+  const List = (await import('@editorjs/list')).default
+  const Image = (await import('@editorjs/image')).default
+  const Quote = (await import('@editorjs/quote')).default
+  const CodeTool = (await import('@editorjs/code')).default
+  const Table = (await import('@editorjs/table')).default
+
   const tools: EditorTools = {
     header: {
       class: Header,
