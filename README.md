@@ -4,12 +4,12 @@ This template should help get you started developing with Vue 3 in Vite.
 
 # Screenshot Available
 
-![img](./screenshot/s1.png)
-![img](./screenshot/s2.png)
-![img](./screenshot/s3.png)
-![img](./screenshot/s4.png)
-![img](./screenshot/s5.png)
-![img](./screenshot/s6.png)
+![img](./screenshots/s1.png)
+![img](./screenshots/s2.png)
+![img](./screenshots/s3.png)
+![img](./screenshots/s4.png)
+![img](./screenshots/s5.png)
+![img](./screenshots/s6.png)
 
 ## Recommended IDE Setup
 
