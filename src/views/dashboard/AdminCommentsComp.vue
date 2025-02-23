@@ -189,7 +189,7 @@ onMounted(() => {
       v-if="showModal"
       class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
     >
-      <WarningPopup title="comment" @delete="handleDeleteComment" @close="showModal = false" />
+      <WarningPopup title="comment" @onDelete="handleDeleteComment" @onClose="showModal = false" />
     </div>
   </div>
 </template>

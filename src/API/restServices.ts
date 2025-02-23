@@ -1,8 +1,10 @@
 import axios from 'axios'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+export const baseURL = 'https://react-blog-5nn6.onrender.com/api'
+
 export const API = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL,
 })
 
 API.interceptors.request.use(

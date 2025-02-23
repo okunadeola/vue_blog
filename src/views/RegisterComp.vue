@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
 import { toast } from '@steveyuowo/vue-hot-toast'
 import type { CurrentUser } from '@/models'
+import { baseURL } from '@/API/restServices'
 
 const formData = reactive({
   email: '',
@@ -32,10 +33,7 @@ async function handleSubmit() {
   errorMessage.value = null
 
   try {
-    const headers = { 'Content-Type': 'application/json' }
-    const response = await axios.post('http://localhost:3000/api/auth/signup', formData, {
-      headers,
-    })
+    const response = await axios.post(`${baseURL}/auth/signup`, formData)
     const data = response.data
 
     if (data.success === false) {

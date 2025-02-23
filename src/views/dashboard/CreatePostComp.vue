@@ -182,8 +182,8 @@ async function initEditor(data: any) {
 async function uploadToCloudinary(file: File) {
   const formData = new FormData()
   formData.append('file', file)
-  formData.append('upload_preset', 'grfua8vf') // Replace with your preset
-  const res = await fetch(`https://api.cloudinary.com/v1_1/dv1cetenk/image/upload`, {
+  formData.append('upload_preset', '...') // Replace with your preset
+  const res = await fetch(`https://api.cloudinary.com/v1_1/.../image/upload`, {
     method: 'POST',
     body: formData,
   })
@@ -377,7 +377,7 @@ onBeforeUnmount(() => {
               </button>
               <button
                 type="button"
-                class="px-4 py-2 rounded bg-indigo-600 disabled:bg-indigo-400 text-white disabled:cursor-not-allowed"
+                class="px-4 py-2 rounded bg-indigo-600 disabled:bg-indigo-400 text-white disabled:cursor-not-allowed flex items-center"
                 @click="saveData"
                 :disabled="loading || !title || !subTitle"
               >

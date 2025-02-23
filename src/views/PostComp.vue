@@ -11,6 +11,7 @@ import { FilePlus, CalendarDays, Clock, ChevronLeft, ChevronRight } from 'lucide
 import type { Blog } from '@/models'
 import HeaderComp from '../components/HeaderComp.vue'
 import FooterComp from '../components/FooterComp.vue'
+import { baseURL } from '@/API/restServices'
 
 // Reactive states
 const blogList = ref<Blog[]>([])
@@ -25,7 +26,7 @@ const router = useRouter()
 // Fetch posts data
 async function fetchPosts() {
   try {
-    const response = await axios.get('http://localhost:3000/api/post/getposts')
+    const response = await axios.get(`${baseURL}/post/getposts`)
     blogList.value = response.data.posts.map((item: any) => ({
       _id: item._id,
       title: item.title,
@@ -46,7 +47,7 @@ async function fetchPosts() {
 
 async function loadFeatured() {
   try {
-    const res = await axios.get('http://localhost:3000/api/featured/get')
+    const res = await axios.get(`${baseURL}/featured/get`)
     const featuredPostId = res.data.postId
 
     if (blogList.value.length === 0) {

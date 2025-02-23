@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useThemeStore } from '@/stores/theme'
 import { useAuthStore } from '@/stores/auth'
 import type { CurrentUser } from '@/models'
+import { baseURL } from '@/API/restServices'
 
 // Props
 defineProps({
@@ -99,8 +100,7 @@ const handleSubmit = () => {
 
 const handleSignout = async () => {
   try {
-    const headers = { 'Content-Type': 'application/json' }
-    const res = await axios.post('http://localhost:3000/api/user/signout', {}, { headers })
+    const res = await axios.post(`${baseURL}/user/signout`, {})
 
     if (res) {
       authProvider.signOut()
@@ -215,7 +215,7 @@ const handleSignout = async () => {
               >
                 <div class="p-4 border-b text-purple-700">
                   <div class="text-sm">{{ currentUser.username }}</div>
-                  <div class="text-sm font-medium truncate">{{ currentUser.email }}</div>
+                  <!-- <div class="text-sm font-medium truncate">{{ currentUser.email }}</div> -->
                 </div>
                 <router-link
                   v-if="currentUser.isAdmin"

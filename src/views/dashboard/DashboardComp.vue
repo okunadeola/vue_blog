@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { API } from '@/API/restServices'
+import { ref, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { API, baseURL } from '@/API/restServices'
 import { LogOutIcon, MessageSquareTextIcon, HomeIcon, FileIcon, UserIcon } from 'lucide-vue-next'
 import { useAuthStore } from '@/stores/auth'
 
 const isSidebarOpen = ref(false)
 const router = useRouter()
+const route = useRoute()
 const authStore = useAuthStore()
 
 function toggleSidebar() {
@@ -18,15 +19,7 @@ function toCreatePost() {
 }
 
 function signOut() {
-  API.post(
-    'http://localhost:3000/api/user/signout',
-    {},
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    },
-  )
+  API.post(`${baseURL}/user/signout`, {})
     .then(() => {
       authStore.signOut()
       localStorage.removeItem('blog_auth_token_vue')
@@ -36,6 +29,12 @@ function signOut() {
       console.error(err.message)
     })
 }
+
+watch(route, () => {
+  if (window.innerWidth < 1024) {
+    isSidebarOpen.value = false
+  }
+})
 </script>
 
 <template>
